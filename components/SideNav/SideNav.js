@@ -1,19 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import { StyleSheet, Text, View ,Button,SafeAreaView} from 'react-native';
+import {GetUrlApi} from '../TipoUberApp/Funciones/FuncionesGlobales';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Index from './components/Index/Index';
 import Map from './components/Map/Mapa';
-import Login from './components/Login/Login';
 
 const Drawer=createDrawerNavigator();
-export default function App() {
+export default function SideNav() {
   
   return (
-      <SafeAreaView>
-        <Login />
-      </SafeAreaView>
+      <NavigationContainer styles={styles}>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Mapa" component={Map}/>
+          <Drawer.Screen name="Home" component={Index}/>
+        </Drawer.Navigator>
+      </NavigationContainer>
   );
 }
 
@@ -26,7 +29,4 @@ const styles = StyleSheet.create({
     paddingTop:'10px'
   },
 });
-
-
-
 
